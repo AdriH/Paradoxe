@@ -21,10 +21,8 @@ $col-width: 100% / $col-number
 
 @for $m from 1 to length($media-list)+1
 	$media: nth($media-list, $m)
-
 	@for $p from 1 to length($prefix-list)+1
 		$prefix: nth($prefix-list, $p)
-
 		@media only screen and (min-width: $media)
 			@for $i from 1 to $col-number+1
 				.#{$prefix}#{$i}
