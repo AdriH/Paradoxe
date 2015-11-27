@@ -1,0 +1,57 @@
+// ________________
+// ________ PARADOXE ________
+// ________________
+
+
+// ________ USER SETTINGS ________
+// ____
+$col-number: 12
+$offset-left: false
+$offset-right: false
+
+$media-list: ('480px', '768px', '992px', '1200px')
+$prefix-list: ('a', 'b', 'c', 'd')
+
+$prefix-offset-left: l
+$prefix-offset-right: r
+
+// ________ COLUMNS ________
+// ____
+$col-width: 100% / $col-number
+
+@for $m from 1 to length($media-list)+1
+	$media: nth($media-list, $m)
+
+	@for $p from 1 to length($prefix-list)+1
+		$prefix: nth($prefix-list, $p)
+
+		@media only screen and (min-width: $media)
+			@for $i from 1 to $col-number+1
+				.#{$prefix}#{$i}
+					width: $col-width * $i
+					float: left
+			@if $offset-left == true
+				@for $i from 1 to $col-number+1
+					.#{$prefix}#{$prefix-offset-left}#{$i}
+						margin-left: $col-width * $i
+			@if $offset-right == true
+				@for $i from 1 to $col-number+1
+					.#{$prefix}#{$prefix-offset-right}#{$i}
+						margin-right: $col-width * $i
+
+// ________ ROWS ________
+// ____
+.flowfix::before, .flowfix::after
+	content: ''
+	display: block
+	visibility: hidden
+	font-size: 0
+	height: 0
+	clear: both
+
+// ________ SPICY RULES _________
+// ____
+*
+	box-sizing: border-box
+img
+	max-width: 100%
