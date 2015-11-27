@@ -8,12 +8,15 @@
 $col-number: 12
 $offset-left: false
 $offset-right: false
+$spicy-rules: true
 
-$media-list: ('480px', '768px', '992px', '1200px')
-$prefix-list: ('a', 'b', 'c', 'd')
+$media-list: (480px, 768px, 992px, 1200px)
+$prefix-list: (a, b, c, d)
 
 $prefix-offset-left: l
 $prefix-offset-right: r
+
+$row-name: flowfix
 
 // ________ COLUMNS ________
 // ____
@@ -39,7 +42,7 @@ $col-width: 100% / $col-number
 
 // ________ ROWS ________
 // ____
-.flowfix::before, .flowfix::after
+.#{$row-name}::before, .#{$row-name}::after
 	content: ''
 	display: block
 	visibility: hidden
@@ -49,7 +52,8 @@ $col-width: 100% / $col-number
 
 // ________ SPICY RULES _________
 // ____
-*
-	box-sizing: border-box
-img
-	max-width: 100%
+@if $spicy-rules == true
+	*
+		box-sizing: border-box
+	img
+		max-width: 100%
