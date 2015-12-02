@@ -26,18 +26,18 @@ $col-width: 100% / $col-number
 	$media: nth($media-list, $m)
 	$prefix: nth($prefix-list, $m)
 	@media only screen and (min-width: $media)
+		@for $i from 1 to $col-number+1
+			.#{$prefix}#{$i}
+				width: $col-width * $i
+				float: left
+		@if $offset-left == true
 			@for $i from 1 to $col-number+1
-				.#{$prefix}#{$i}
-					width: $col-width * $i
-					float: left
-			@if $offset-left == true
-				@for $i from 1 to $col-number+1
-					.#{$prefix}#{$prefix-offset-left}#{$i}
-						margin-left: $col-width * $i
-			@if $offset-right == true
-				@for $i from 1 to $col-number+1
-					.#{$prefix}#{$prefix-offset-right}#{$i}
-						margin-right: $col-width * $i
+				.#{$prefix}#{$prefix-offset-left}#{$i}
+					margin-left: $col-width * $i
+		@if $offset-right == true
+			@for $i from 1 to $col-number+1
+				.#{$prefix}#{$prefix-offset-right}#{$i}
+					margin-right: $col-width * $i
 
 
 			
